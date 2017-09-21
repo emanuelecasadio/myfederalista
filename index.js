@@ -1,7 +1,7 @@
 const express  = require('express');
 const mongoose = require('mongoose');
 const app = express();
-const Person = require('models/person');
+const Person = require('./models/person.js');
 
 function getRandomArbitrary(min, max){
   return Math.random() * (max-min)+min;
@@ -15,27 +15,27 @@ app.get('/', (req, res) => {
   res.render('index.ejs', {});
 });
 
-app.get(/\/(?!\s*$).+/, (req, res) => {
-  let name = req.query.name || req.path.substring(1);
+app.get(/^\/cm/, (req, res) => {
+  let name = req.query.name || req.path.substring(4);
 
   Person.findOne({name}).exec()
   .then(person => {
     if(!person){
       person = new Person({
         name,
-        cm: getRandomArbitrary(10, 30);
+        cm: getRandomArbitrary(10, 30)
       });
       person.save()
       .then(()=>{;})
-      .catch(err=>{logger.error(err)});
+      .catch(err=>{console.error(err)});
     }
     res.render('cm.ejs', {
-      name,
-      cm: cm.toFixed(1)
+      name: person.name,
+      cm: person.cm.toFixed(1)
     });
   })
   .catch(err => {
-    logger.error(err);
+    console.error(err);
   });
 });
 
