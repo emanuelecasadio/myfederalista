@@ -1,0 +1,22 @@
+{
+  "name": "mylibberale",
+  "version": "0.0.1",
+  "description": "How long is your Libberale? Check it out!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emanuelecasadio/mylibberale.git"
+  },
+  "author": "Emanuele Casadio",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/emanuelecasadio/mylibberale/issues"
+  },
+  "homepage": "https://github.com/emanuelecasadio/mylibberale#readme",
+  "dependencies": {
+    "mongoose": "^4.11.12"
+  }
+}
