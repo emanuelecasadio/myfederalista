@@ -39,9 +39,17 @@
 
 					// Images (in the format of 'url': 'alignment').
 						images: {
-							'images/bg01.jpg': 'center',
-							'images/bg02.jpg': 'center',
-							'images/bg03.jpg': 'center'
+							'images/bg04.jpg': 'center',
+							'images/bg05.jpg': 'center',
+							'images/bg06.jpg': 'center',
+                            'images/bg07.jpg': 'center'
+						},
+
+						credits: {
+                            'images/bg04.jpg': 'Photo by Olu Eletu',
+                            'images/bg05.jpg': 'Photo by Louis Amal',
+                            'images/bg06.jpg': 'Photo by Rick Tap',
+                            'images/bg07.jpg': 'Photo by Grace Stroke'
 						},
 
 					// Delay.
@@ -51,7 +59,7 @@
 
 			// Vars.
 				var	pos = 0, lastPos = 0,
-					$wrapper, $bgs = [], $bg,
+					$wrapper, $bgs = [], $credits = [], $bg,
 					k, v;
 
 			// Create BG wrapper, BGs.
@@ -69,12 +77,14 @@
 
 					// Add it to array.
 						$bgs.push($bg);
+						$credits.push(settings.credits[k]);
 
 				}
 
 			// Main loop.
 				$bgs[pos].classList.add('visible');
 				$bgs[pos].classList.add('top');
+            document.getElementById("credits").innerHTML = $credits[pos];
 
 				// Bail if we only have a single BG or the client doesn't support transitions.
 					if ($bgs.length == 1
@@ -94,6 +104,7 @@
 						$bgs[lastPos].classList.remove('top');
 						$bgs[pos].classList.add('visible');
 						$bgs[pos].classList.add('top');
+                    	document.getElementById("credits").innerHTML = $credits[pos];
 
 					// Hide last image after a short delay.
 						window.setTimeout(function() {
