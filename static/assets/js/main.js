@@ -112,30 +112,32 @@
 					$submit = document.querySelectorAll('#signup-form input[type="submit"]')[0],
 					$message;
 
-			// Bail if addEventListener isn't supported.
-				if (!('addEventListener' in $form))
-					return;
+				if ($form) {
+                    // Bail if addEventListener isn't supported.
+                    if (!('addEventListener' in $form))
+                        return;
 
-			// Message.
-				$message = document.createElement('span');
-					$message.classList.add('message');
-					$form.appendChild($message);
+                    // Message.
+                    $message = document.createElement('span');
+                    $message.classList.add('message');
+                    $form.appendChild($message);
 
-				$message._show = function(type, text) {
+                    $message._show = function(type, text) {
 
-					$message.innerHTML = text;
-					$message.classList.add(type);
-					$message.classList.add('visible');
+                        $message.innerHTML = text;
+                        $message.classList.add(type);
+                        $message.classList.add('visible');
 
-					window.setTimeout(function() {
-						$message._hide();
-					}, 3000);
+                        window.setTimeout(function() {
+                            $message._hide();
+                        }, 3000);
 
-				};
+                    };
 
-				$message._hide = function() {
-					$message.classList.remove('visible');
-				};
+                    $message._hide = function() {
+                        $message.classList.remove('visible');
+                    };
+				}
 
 		})();
 
