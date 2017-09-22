@@ -13,7 +13,7 @@ app.set('view engine', 'ejs');
 
 app.get(/^\/[^.]*$/, (req, res) => {
   let name = req.query.name || req.path.substring(1);
-  name = name.trim();
+  name = name.trim().replace("%20", " ").replace("+", " ");
 
   if(!name || name==""){
       res.render('index.ejs', {});
