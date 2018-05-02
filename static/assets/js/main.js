@@ -39,17 +39,13 @@
 
 					// Images (in the format of 'url': 'alignment').
 						images: {
-							'images/bg04.jpg': 'center',
-							'images/bg05.jpg': 'center',
-							'images/bg06.jpg': 'center',
-                            'images/bg07.jpg': 'center'
+							'images/bg01.jpg': 'center',
+							'images/bg02.jpg': 'center'
 						},
 
 						credits: {
-                            'images/bg04.jpg': 'Photo by Olu Eletu',
-                            'images/bg05.jpg': 'Photo by Louis Amal',
-                            'images/bg06.jpg': 'Photo by Rick Tap',
-                            'images/bg07.jpg': 'Photo by Grace Stroke'
+                            'images/bg01.jpg': 'Photo by Giampiero Gramaglia',
+                            'images/bg02.jpg': 'Photo by By Diliff'
 						},
 
 					// Delay.

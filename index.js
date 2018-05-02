@@ -1,13 +1,15 @@
 const express  = require('express');
-const mongoose = require('mongoose');
+const crypto = require('crypto');
 const app = express();
-const Person = require('./models/person.js');
 
-function getRandomArbitrary(min, max){
-  return Math.random() * (max-min)+min;
+function getRandomByName(name, min, max) {
+    const hash = crypto.createHash('sha256');
+    hash.update(name);
+    let uint26 = hash.digest().readUInt16BE(0, 6);
+    let number = uint26/65535 * (max-min) + min;
+    return number.toFixed(2);
+
 }
-
-mongoose.connect(process.env.MONGODB_URI);
 
 app.set('view engine', 'ejs');
 
@@ -18,25 +20,10 @@ app.get(/^\/[^.]*$/, (req, res) => {
   if(!name || name==""){
       res.render('index.ejs', {});
   } else {
-      Person.findOne({name}).exec()
-          .then(person => {
-              if(!person){
-                  person = new Person({
-                      name,
-                      cm: getRandomArbitrary(5, 20)
-                  });
-                  person.save()
-                      .then(()=>{;})
-                      .catch(err=>{console.error(err)});
-              }
-              res.render('cm.ejs', {
-                  name: person.name,
-                  cm: person.cm.toFixed(1)
-              });
-          })
-          .catch(err => {
-              console.error(err);
-          });
+      res.render('cm.ejs', {
+          name: name,
+          cm: getRandomByName(name, 5, 20)
+      });
   }
 });
 

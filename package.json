@@ -1,7 +1,7 @@
 {
-  "name": "mylibberale",
+  "name": "myfederalista",
   "version": "0.0.1",
-  "description": "How long is your Libberale? Check it out!",
+  "description": "How long is your Federalista? Check it out!",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,7 +18,6 @@
   "homepage": "https://github.com/emanuelecasadio/mylibberale#readme",
   "dependencies": {
     "ejs": "^2.5.7",
-    "express": "^4.15.4",
     "mongoose": "^4.11.12"
   }
 }
